@@ -1,0 +1,1281 @@
+{
+  "version": "3.0",
+  "constraint_priority": [
+    "allergies",
+    "halal",
+    "diet_bans",
+    "labs",
+    "diet_prefs"
+  ],
+  "supported": {
+    "diets": [
+      "vegetarian",
+      "vegan",
+      "high_protein",
+      "low_carb",
+      "gluten_free",
+      "low_sodium",
+      "low_fat",
+      "halal"
+    ],
+    "allergies": [
+      "wheat_gluten",
+      "dairy",
+      "egg",
+      "fish",
+      "soy",
+      "tree_nut",
+      "peanut",
+      "sesame"
+    ],
+    "labs": [
+      "LDL_HIGH",
+      "HDL_LOW",
+      "TRIGLYCERIDES_HIGH",
+      "GLUCOSE_HIGH",
+      "CREATININE_HIGH"
+    ]
+  },
+  "categories": {
+    "grain_wheat_pasta_noodles": {
+      "label": "Wheat pasta & noodles",
+      "examples": [
+        "pasta",
+        "spaghetti",
+        "penne",
+        "tagliatelle",
+        "noodles",
+        "macaroni"
+      ]
+    },
+    "grain_wheat_bread_wraps": {
+      "label": "Bread & wraps",
+      "examples": [
+        "bread",
+        "bun",
+        "pita",
+        "tortilla",
+        "wrap",
+        "bagel"
+      ]
+    },
+    "grain_wheat_flour_baking": {
+      "label": "Wheat flour & baking",
+      "examples": [
+        "flour",
+        "wheat flour",
+        "breadcrumbs",
+        "cake mix",
+        "dough"
+      ]
+    },
+    "grain_rice": {
+      "label": "Rice",
+      "examples": [
+        "rice",
+        "white rice",
+        "brown rice"
+      ]
+    },
+    "grain_corn": {
+      "label": "Corn products",
+      "examples": [
+        "cornmeal",
+        "polenta",
+        "corn tortilla"
+      ]
+    },
+    "grain_oats": {
+      "label": "Oats",
+      "examples": [
+        "oats",
+        "oatmeal"
+      ]
+    },
+    "grain_other_gluten": {
+      "label": "Other gluten grains",
+      "examples": [
+        "barley",
+        "rye",
+        "bulgur",
+        "couscous",
+        "semolina"
+      ]
+    },
+    "grain_gluten_free_pasta_noodles": {
+      "label": "Gluten-free pasta & noodles",
+      "examples": [
+        "gluten-free pasta",
+        "rice noodles",
+        "lentil pasta",
+        "corn pasta"
+      ]
+    },
+    "grain_gluten_free_bread_wraps": {
+      "label": "Gluten-free bread & wraps",
+      "examples": [
+        "gluten-free bread",
+        "gluten-free wrap"
+      ]
+    },
+    "grain_gluten_free_flour_baking": {
+      "label": "Gluten-free flour & baking",
+      "examples": [
+        "gluten-free flour",
+        "rice flour",
+        "tapioca flour"
+      ]
+    },
+    "starch_potato": {
+      "label": "Potato",
+      "examples": [
+        "potato",
+        "fries",
+        "mashed potato"
+      ]
+    },
+    "starch_starchy_veg": {
+      "label": "Starchy vegetables",
+      "examples": [
+        "peas",
+        "corn kernels"
+      ]
+    },
+    "protein_poultry": {
+      "label": "Poultry",
+      "examples": [
+        "chicken",
+        "turkey",
+        "chicken breast"
+      ]
+    },
+    "protein_red_meat": {
+      "label": "Red meat",
+      "examples": [
+        "beef",
+        "lamb"
+      ]
+    },
+    "protein_processed_meat": {
+      "label": "Processed meat",
+      "examples": [
+        "bacon",
+        "sausage",
+        "deli meat"
+      ]
+    },
+    "protein_fish_seafood": {
+      "label": "Fish & seafood",
+      "examples": [
+        "fish",
+        "salmon",
+        "tuna",
+        "shrimp"
+      ]
+    },
+    "protein_eggs": {
+      "label": "Eggs",
+      "examples": [
+        "egg",
+        "egg whites",
+        "whole egg"
+      ]
+    },
+    "protein_organs": {
+      "label": "Organ meats",
+      "examples": [
+        "liver"
+      ]
+    },
+    "protein_soy": {
+      "label": "Soy protein",
+      "examples": [
+        "tofu",
+        "edamame",
+        "soy milk",
+        "miso"
+      ]
+    },
+    "protein_legumes": {
+      "label": "Legumes",
+      "examples": [
+        "beans",
+        "lentils",
+        "chickpeas"
+      ]
+    },
+    "protein_nuts_tree": {
+      "label": "Tree nuts",
+      "examples": [
+        "almond",
+        "walnut",
+        "cashew"
+      ]
+    },
+    "protein_peanut": {
+      "label": "Peanuts",
+      "examples": [
+        "peanut",
+        "peanut butter"
+      ]
+    },
+    "protein_seeds_sesame": {
+      "label": "Sesame",
+      "examples": [
+        "sesame",
+        "tahini"
+      ]
+    },
+    "protein_seeds_other": {
+      "label": "Other seeds",
+      "examples": [
+        "chia",
+        "flax",
+        "pumpkin seeds",
+        "sunflower seeds"
+      ]
+    },
+    "dairy_milk_cream": {
+      "label": "Milk & cream",
+      "examples": [
+        "milk",
+        "cream",
+        "half-and-half"
+      ]
+    },
+    "dairy_cheese": {
+      "label": "Cheese",
+      "examples": [
+        "parmesan",
+        "mozzarella",
+        "cheddar"
+      ]
+    },
+    "dairy_butter_ghee": {
+      "label": "Butter & ghee",
+      "examples": [
+        "butter",
+        "ghee"
+      ]
+    },
+    "dairy_yogurt": {
+      "label": "Yogurt",
+      "examples": [
+        "yogurt",
+        "labneh"
+      ]
+    },
+    "dairy_alt_plant_milk": {
+      "label": "Plant milk",
+      "examples": [
+        "unsweetened coconut milk",
+        "almond milk",
+        "oat milk"
+      ]
+    },
+    "dairy_alt_vegan_cheese": {
+      "label": "Vegan cheese",
+      "examples": [
+        "vegan cheese"
+      ]
+    },
+    "dairy_alt_vegan_butter": {
+      "label": "Vegan butter",
+      "examples": [
+        "vegan butter"
+      ]
+    },
+    "fat_oils": {
+      "label": "Oils",
+      "examples": [
+        "olive oil",
+        "vegetable oil",
+        "canola oil"
+      ]
+    },
+    "sodium_salt_and_broth": {
+      "label": "Salt & broth",
+      "examples": [
+        "salt",
+        "stock cube",
+        "bouillon",
+        "broth concentrate"
+      ]
+    },
+    "sauce_condiment_high_sodium": {
+      "label": "High-sodium sauces",
+      "examples": [
+        "soy sauce",
+        "teriyaki",
+        "ketchup",
+        "ready-made sauces"
+      ]
+    },
+    "sugar_sweeteners": {
+      "label": "Sugar & sweeteners",
+      "examples": [
+        "sugar",
+        "honey",
+        "syrup"
+      ]
+    },
+    "veg_nonstarchy": {
+      "label": "Non-starchy vegetables",
+      "examples": [
+        "broccoli",
+        "spinach",
+        "zucchini",
+        "mushrooms"
+      ]
+    },
+    "veg_aromatics": {
+      "label": "Aromatics",
+      "examples": [
+        "onion",
+        "garlic"
+      ]
+    },
+    "fruit_general": {
+      "label": "Fruits",
+      "examples": [
+        "tomato",
+        "lemon",
+        "berries"
+      ]
+    },
+    "spices_herbs": {
+      "label": "Spices & herbs",
+      "examples": [
+        "paprika",
+        "pepper",
+        "ginger",
+        "cayenne",
+        "parsley"
+      ]
+    },
+    "other_unknown": {
+      "label": "Other / unknown",
+      "examples": [
+        "ingredient",
+        "seasoning mix",
+        "product"
+      ]
+    }
+  },
+  "category_rules": {
+    "grain_wheat_pasta_noodles": {
+      "allergies": {
+        "wheat_gluten": {
+          "action": "substitute",
+          "to_category": "grain_gluten_free_pasta_noodles",
+          "substitute_name": "gluten-free pasta",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "it contains gluten"
+        }
+      },
+      "diets": {
+        "gluten_free": {
+          "action": "substitute",
+          "to_category": "grain_gluten_free_pasta_noodles",
+          "substitute_name": "gluten-free pasta",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to avoid gluten"
+        }
+      },
+      "labs": {
+        "GLUCOSE_HIGH": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.75,
+          "amount_policy": {
+            "type": "multiplier",
+            "value": 0.75
+          },
+          "reason_user": "to reduce refined carbs and support blood sugar"
+        },
+        "TRIGLYCERIDES_HIGH": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.75,
+          "amount_policy": {
+            "type": "multiplier",
+            "value": 0.75
+          },
+          "reason_user": "to reduce refined carbs and support triglycerides"
+        }
+      },
+      "diets_soft": {
+        "low_carb": {
+          "action": "substitute",
+          "to_category": "veg_nonstarchy",
+          "substitute_name": "zucchini noodles",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to lower carbs"
+        }
+      }
+    },
+    "grain_wheat_bread_wraps": {
+      "allergies": {
+        "wheat_gluten": {
+          "action": "substitute",
+          "to_category": "grain_gluten_free_bread_wraps",
+          "substitute_name": "gluten-free wrap",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "it contains gluten"
+        }
+      },
+      "diets": {
+        "gluten_free": {
+          "action": "substitute",
+          "to_category": "grain_gluten_free_bread_wraps",
+          "substitute_name": "gluten-free wrap",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to avoid gluten"
+        }
+      },
+      "labs": {
+        "GLUCOSE_HIGH": {
+          "action": "substitute",
+          "to_category": "veg_nonstarchy",
+          "substitute_name": "lettuce wraps",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to reduce refined carbs and support blood sugar"
+        },
+        "TRIGLYCERIDES_HIGH": {
+          "action": "substitute",
+          "to_category": "veg_nonstarchy",
+          "substitute_name": "lettuce wraps",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to reduce refined carbs and support triglycerides"
+        }
+      },
+      "diets_soft": {
+        "low_carb": {
+          "action": "substitute",
+          "to_category": "veg_nonstarchy",
+          "substitute_name": "lettuce wraps",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to lower carbs"
+        }
+      }
+    },
+    "grain_wheat_flour_baking": {
+      "allergies": {
+        "wheat_gluten": {
+          "action": "substitute",
+          "to_category": "grain_gluten_free_flour_baking",
+          "substitute_name": "gluten-free flour blend",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "it contains gluten"
+        }
+      },
+      "diets": {
+        "gluten_free": {
+          "action": "substitute",
+          "to_category": "grain_gluten_free_flour_baking",
+          "substitute_name": "gluten-free flour blend",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to avoid gluten"
+        }
+      },
+      "labs": {
+        "GLUCOSE_HIGH": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.75,
+          "amount_policy": {
+            "type": "multiplier",
+            "value": 0.75
+          },
+          "reason_user": "to reduce refined carbs and support blood sugar"
+        }
+      },
+      "diets_soft": {
+        "low_carb": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.75,
+          "amount_policy": {
+            "type": "multiplier",
+            "value": 0.75
+          },
+          "reason_user": "to reduce carbs"
+        }
+      }
+    },
+    "grain_other_gluten": {
+      "allergies": {
+        "wheat_gluten": {
+          "action": "substitute",
+          "to_category": "grain_gluten_free_pasta_noodles",
+          "substitute_name": "rice noodles",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "it contains gluten grains"
+        }
+      },
+      "diets": {
+        "gluten_free": {
+          "action": "substitute",
+          "to_category": "grain_gluten_free_pasta_noodles",
+          "substitute_name": "rice noodles",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to avoid gluten grains"
+        }
+      },
+      "labs": {
+        "GLUCOSE_HIGH": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.75,
+          "amount_policy": {
+            "type": "multiplier",
+            "value": 0.75
+          },
+          "reason_user": "to reduce carbohydrate impact for blood sugar"
+        }
+      },
+      "diets_soft": {
+        "low_carb": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.75,
+          "amount_policy": {
+            "type": "multiplier",
+            "value": 0.75
+          },
+          "reason_user": "to lower carbs"
+        }
+      }
+    },
+    "dairy_butter_ghee": {
+      "allergies": {
+        "dairy": {
+          "action": "substitute",
+          "to_category": "fat_oils",
+          "substitute_name": "olive oil",
+          "amount_policy": {
+            "type": "multiplier",
+            "value": 0.75
+          },
+          "reason_user": "it contains dairy"
+        }
+      },
+      "labs": {
+        "LDL_HIGH": {
+          "action": "substitute",
+          "to_category": "fat_oils",
+          "substitute_name": "olive oil",
+          "amount_policy": {
+            "type": "multiplier",
+            "value": 0.75
+          },
+          "reason_user": "to reduce saturated fat for LDL control"
+        }
+      },
+      "diets_soft": {
+        "low_fat": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.75,
+          "amount_policy": {
+            "type": "multiplier",
+            "value": 0.75
+          },
+          "reason_user": "to lower added fat"
+        }
+      },
+      "diets": {
+        "vegan": {
+          "action": "substitute",
+          "to_category": "dairy_alt_vegan_butter",
+          "substitute_name": "vegan butter",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to keep the recipe vegan"
+        }
+      }
+    },
+    "dairy_milk_cream": {
+      "allergies": {
+        "dairy": {
+          "action": "substitute",
+          "to_category": "dairy_alt_plant_milk",
+          "substitute_name": "unsweetened plant milk",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "it contains dairy"
+        }
+      },
+      "labs": {
+        "LDL_HIGH": {
+          "action": "substitute",
+          "to_category": "dairy_alt_plant_milk",
+          "substitute_name": "unsweetened plant milk",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to reduce saturated fat for LDL control"
+        }
+      },
+      "diets": {
+        "vegan": {
+          "action": "substitute",
+          "to_category": "dairy_alt_plant_milk",
+          "substitute_name": "unsweetened plant milk",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to keep the recipe vegan"
+        }
+      },
+      "diets_soft": {
+        "low_fat": {
+          "action": "substitute",
+          "to_category": "dairy_alt_plant_milk",
+          "substitute_name": "unsweetened plant milk",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to reduce fat"
+        }
+      }
+    },
+    "dairy_yogurt": {
+      "allergies": {
+        "dairy": {
+          "action": "substitute",
+          "to_category": "dairy_alt_plant_milk",
+          "substitute_name": "coconut yogurt (unsweetened)",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "it contains dairy"
+        }
+      },
+      "diets": {
+        "vegan": {
+          "action": "substitute",
+          "to_category": "dairy_alt_plant_milk",
+          "substitute_name": "coconut yogurt (unsweetened)",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to keep the recipe vegan"
+        }
+      },
+      "labs": {
+        "LDL_HIGH": {
+          "action": "substitute",
+          "to_category": "dairy_alt_plant_milk",
+          "substitute_name": "coconut yogurt (unsweetened)",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to reduce saturated fat for LDL control"
+        }
+      }
+    },
+    "dairy_cheese": {
+      "allergies": {
+        "dairy": {
+          "action": "substitute",
+          "to_category": "dairy_alt_vegan_cheese",
+          "substitute_name": "vegan cheese",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "it contains dairy"
+        }
+      },
+      "diets": {
+        "vegan": {
+          "action": "substitute",
+          "to_category": "dairy_alt_vegan_cheese",
+          "substitute_name": "vegan cheese",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to keep the recipe vegan"
+        }
+      },
+      "labs": {
+        "LDL_HIGH": {
+          "action": "substitute",
+          "to_category": "dairy_alt_vegan_cheese",
+          "substitute_name": "vegan cheese",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to reduce saturated fat for LDL control"
+        }
+      },
+      "diets_soft": {
+        "low_fat": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.75,
+          "amount_policy": {
+            "type": "multiplier",
+            "value": 0.75
+          },
+          "reason_user": "to reduce high-fat cheese contribution"
+        }
+      }
+    },
+    "protein_eggs": {
+      "allergies": {
+        "egg": {
+          "action": "substitute",
+          "to_category": "protein_legumes",
+          "substitute_name": "flax egg (ground flax + water)",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "it contains egg"
+        }
+      },
+      "diets": {
+        "vegan": {
+          "action": "substitute",
+          "to_category": "protein_legumes",
+          "substitute_name": "flax egg (ground flax + water)",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to keep the recipe vegan"
+        }
+      },
+      "labs": {
+        "LDL_HIGH": {
+          "action": "substitute",
+          "to_category": "protein_legumes",
+          "substitute_name": "flax egg (ground flax + water)",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to reduce cholesterol impact for LDL control"
+        }
+      }
+    },
+    "protein_fish_seafood": {
+      "allergies": {
+        "fish": {
+          "action": "substitute",
+          "to_category": "protein_legumes",
+          "substitute_name": "cooked chickpeas",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "it contains fish/seafood"
+        }
+      },
+      "diets": {
+        "vegan": {
+          "action": "substitute",
+          "to_category": "protein_legumes",
+          "substitute_name": "cooked chickpeas",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to keep the recipe vegan"
+        },
+        "vegetarian": {
+          "action": "substitute",
+          "to_category": "protein_legumes",
+          "substitute_name": "cooked chickpeas",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to keep the recipe vegetarian"
+        }
+      },
+      "labs": {
+        "HDL_LOW": {
+          "action": "increase_amount",
+          "increase_ratio": 0.2,
+          "reason_user": "fish is generally supportive for healthy fats; increased slightly to support HDL"
+        }
+      }
+    },
+    "protein_poultry": {
+      "diets": {
+        "vegan": {
+          "action": "substitute",
+          "to_category": "protein_soy",
+          "substitute_name": "tofu",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to keep the recipe vegan",
+          "conditional_substitutes": {
+            "soy": {
+              "to_category": "protein_legumes",
+              "substitute_name": "cooked lentils"
+            }
+          }
+        },
+        "vegetarian": {
+          "action": "substitute",
+          "to_category": "protein_soy",
+          "substitute_name": "tofu",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to keep the recipe vegetarian",
+          "conditional_substitutes": {
+            "soy": {
+              "to_category": "protein_legumes",
+              "substitute_name": "cooked lentils"
+            }
+          }
+        }
+      },
+      "labs": {
+        "CREATININE_HIGH": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.75,
+          "amount_policy": {
+            "type": "multiplier",
+            "value": 0.75
+          },
+          "reason_user": "to be conservative with protein for kidney-related constraints"
+        }
+      },
+      "diets_soft": {
+        "high_protein": {
+          "action": "increase_amount",
+          "increase_ratio": 0.2,
+          "reason_user": "you requested higher protein"
+        }
+      }
+    },
+    "protein_red_meat": {
+      "diets": {
+        "vegan": {
+          "action": "substitute",
+          "to_category": "protein_legumes",
+          "substitute_name": "cooked lentils",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to keep the recipe vegan"
+        },
+        "vegetarian": {
+          "action": "substitute",
+          "to_category": "protein_legumes",
+          "substitute_name": "cooked lentils",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to keep the recipe vegetarian"
+        },
+        "halal": {
+          "action": "substitute",
+          "to_category": "protein_poultry",
+          "substitute_name": "halal-certified chicken",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to ensure halal-friendly protein"
+        }
+      },
+      "labs": {
+        "LDL_HIGH": {
+          "action": "substitute",
+          "to_category": "protein_poultry",
+          "substitute_name": "chicken breast",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to reduce saturated fat for LDL control"
+        },
+        "CREATININE_HIGH": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.75,
+          "amount_policy": {
+            "type": "multiplier",
+            "value": 0.75
+          },
+          "reason_user": "to be conservative with protein for kidney-related constraints"
+        }
+      }
+    },
+    "protein_processed_meat": {
+      "diets": {
+        "vegan": {
+          "action": "substitute",
+          "to_category": "protein_legumes",
+          "substitute_name": "cooked lentils",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to keep the recipe vegan"
+        },
+        "vegetarian": {
+          "action": "substitute",
+          "to_category": "protein_legumes",
+          "substitute_name": "cooked lentils",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to keep the recipe vegetarian"
+        },
+        "halal": {
+          "action": "substitute",
+          "to_category": "protein_poultry",
+          "substitute_name": "halal-certified turkey slices",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "processed meat may not be halal-safe"
+        }
+      },
+      "labs": {
+        "LDL_HIGH": {
+          "action": "substitute",
+          "to_category": "protein_poultry",
+          "substitute_name": "chicken breast",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to reduce saturated fat for LDL control"
+        },
+        "TRIGLYCERIDES_HIGH": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.75,
+          "amount_policy": {
+            "type": "multiplier",
+            "value": 0.75
+          },
+          "reason_user": "processed meats can worsen lipid profile; reduced portion"
+        },
+        "CREATININE_HIGH": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.75,
+          "amount_policy": {
+            "type": "multiplier",
+            "value": 0.75
+          },
+          "reason_user": "to be conservative with protein for kidney-related constraints"
+        }
+      },
+      "diets_soft": {
+        "low_sodium": {
+          "action": "substitute",
+          "to_category": "protein_poultry",
+          "substitute_name": "fresh chicken breast",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "processed meats are often high sodium"
+        }
+      }
+    },
+    "protein_organs": {
+      "diets": {
+        "vegan": {
+          "action": "substitute",
+          "to_category": "protein_legumes",
+          "substitute_name": "cooked lentils",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to keep the recipe vegan"
+        },
+        "vegetarian": {
+          "action": "substitute",
+          "to_category": "protein_legumes",
+          "substitute_name": "cooked lentils",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to keep the recipe vegetarian"
+        }
+      },
+      "labs": {
+        "LDL_HIGH": {
+          "action": "substitute",
+          "to_category": "protein_poultry",
+          "substitute_name": "chicken breast",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to reduce cholesterol impact for LDL control"
+        }
+      }
+    },
+    "protein_soy": {
+      "allergies": {
+        "soy": {
+          "action": "substitute",
+          "to_category": "protein_legumes",
+          "substitute_name": "cooked lentils",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "it contains soy"
+        }
+      }
+    },
+    "protein_nuts_tree": {
+      "allergies": {
+        "tree_nut": {
+          "action": "substitute",
+          "to_category": "protein_seeds_other",
+          "substitute_name": "pumpkin seeds",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "it contains tree nuts"
+        }
+      }
+    },
+    "protein_peanut": {
+      "allergies": {
+        "peanut": {
+          "action": "substitute",
+          "to_category": "protein_seeds_other",
+          "substitute_name": "sunflower seed butter",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "it contains peanuts"
+        }
+      }
+    },
+    "protein_seeds_sesame": {
+      "allergies": {
+        "sesame": {
+          "action": "substitute",
+          "to_category": "protein_seeds_other",
+          "substitute_name": "pumpkin seeds",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "it contains sesame"
+        }
+      }
+    },
+    "sodium_salt_and_broth": {
+      "labs": {
+        "CREATININE_HIGH": {
+          "action": "substitute",
+          "to_category": "spices_herbs",
+          "substitute_name": "salt-free herb blend",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to reduce sodium for kidney-related constraints"
+        }
+      },
+      "diets_soft": {
+        "low_sodium": {
+          "action": "substitute",
+          "to_category": "spices_herbs",
+          "substitute_name": "salt-free herb blend",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to reduce sodium"
+        }
+      }
+    },
+    "sauce_condiment_high_sodium": {
+      "allergies": {
+        "wheat_gluten": {
+          "action": "substitute",
+          "to_category": "sauce_condiment_high_sodium",
+          "substitute_name": "tamari (gluten-free soy sauce)",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "it may contain gluten",
+          "conditional_substitutes": {
+            "soy": {
+              "to_category": "spices_herbs",
+              "substitute_name": "lemon juice + garlic-free herb mix"
+            }
+          }
+        },
+        "soy": {
+          "action": "substitute",
+          "to_category": "spices_herbs",
+          "substitute_name": "lemon juice + garlic-free herb mix",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "it contains soy"
+        }
+      },
+      "labs": {
+        "CREATININE_HIGH": {
+          "action": "substitute",
+          "to_category": "spices_herbs",
+          "substitute_name": "lemon juice + herb mix",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to reduce sodium for kidney-related constraints"
+        }
+      },
+      "diets_soft": {
+        "low_sodium": {
+          "action": "substitute",
+          "to_category": "spices_herbs",
+          "substitute_name": "lemon juice + herb mix",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to reduce sodium"
+        }
+      }
+    },
+    "sugar_sweeteners": {
+      "labs": {
+        "GLUCOSE_HIGH": {
+          "action": "substitute",
+          "to_category": "fruit_general",
+          "substitute_name": "berries (small amount)",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to reduce added sugar for blood sugar control"
+        },
+        "TRIGLYCERIDES_HIGH": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.5,
+          "amount_policy": {
+            "type": "multiplier",
+            "value": 0.5
+          },
+          "reason_user": "to reduce added sugar for triglycerides control"
+        }
+      },
+      "diets_soft": {
+        "low_carb": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.5,
+          "amount_policy": {
+            "type": "multiplier",
+            "value": 0.5
+          },
+          "reason_user": "to reduce carbs/sugar"
+        }
+      }
+    },
+    "grain_rice": {
+      "labs": {
+        "GLUCOSE_HIGH": {
+          "action": "substitute",
+          "to_category": "veg_nonstarchy",
+          "substitute_name": "cauliflower rice",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to reduce carbohydrate impact for blood sugar"
+        },
+        "TRIGLYCERIDES_HIGH": {
+          "action": "substitute",
+          "to_category": "veg_nonstarchy",
+          "substitute_name": "cauliflower rice",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to reduce refined carbs for triglycerides"
+        }
+      },
+      "diets_soft": {
+        "low_carb": {
+          "action": "substitute",
+          "to_category": "veg_nonstarchy",
+          "substitute_name": "cauliflower rice",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to lower carbs"
+        }
+      }
+    },
+    "starch_potato": {
+      "labs": {
+        "GLUCOSE_HIGH": {
+          "action": "substitute",
+          "to_category": "veg_nonstarchy",
+          "substitute_name": "cauliflower mash",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to reduce high-GI starch impact for blood sugar"
+        },
+        "TRIGLYCERIDES_HIGH": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.75,
+          "amount_policy": {
+            "type": "multiplier",
+            "value": 0.75
+          },
+          "reason_user": "to reduce starchy portion for triglycerides"
+        }
+      },
+      "diets_soft": {
+        "low_carb": {
+          "action": "substitute",
+          "to_category": "veg_nonstarchy",
+          "substitute_name": "cauliflower mash",
+          "amount_policy": {
+            "type": "keep_same"
+          },
+          "reason_user": "to lower carbs"
+        }
+      }
+    },
+    "starch_starchy_veg": {
+      "labs": {
+        "GLUCOSE_HIGH": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.75,
+          "amount_policy": {
+            "type": "multiplier",
+            "value": 0.75
+          },
+          "reason_user": "to reduce starchy portion for blood sugar"
+        }
+      },
+      "diets_soft": {
+        "low_carb": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.75,
+          "amount_policy": {
+            "type": "multiplier",
+            "value": 0.75
+          },
+          "reason_user": "to reduce carbs"
+        }
+      }
+    }
+  },
+  "defaults": {
+    "report_prefix": "[Step3]",
+    "no_rule_behavior": "keep",
+    "llm_fallback_allowed": true,
+    "llm_fallback_model": "gpt-4.1-mini"
+  }
+}

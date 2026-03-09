@@ -1,0 +1,374 @@
+{
+  "version": "1.0",
+  "constraint_priority": ["allergies", "halal", "labs", "diets"],
+
+  "constraints_supported": {
+    "diets": [
+      "vegetarian",
+      "vegan",
+      "high_protein",
+      "low_carb",
+      "gluten_free",
+      "low_sodium",
+      "low_fat",
+      "halal"
+    ],
+    "allergies": [
+      "wheat_gluten",
+      "dairy",
+      "egg",
+      "fish",
+      "soy",
+      "tree_nut",
+      "peanut",
+      "sesame"
+    ],
+    "labs": [
+      "LDL_HIGH",
+      "HDL_LOW",
+      "TRIGLYCERIDES_HIGH",
+      "GLUCOSE_HIGH",
+      "CREATININE_HIGH"
+    ]
+  },
+
+  "categories": {
+    "grain.wheat.flour": {
+      "label": "Wheat flour (gluten)",
+      "examples": ["flour", "all-purpose flour", "wheat flour", "plain flour"],
+      "flags": {
+        "contains_wheat_gluten": true,
+        "contains_dairy": false,
+        "contains_egg": false,
+        "contains_fish": false,
+        "contains_soy": false,
+        "contains_tree_nut": false,
+        "contains_peanut": false,
+        "contains_sesame": false,
+        "is_vegan_ok": true,
+        "is_vegetarian_ok": true,
+        "is_halal_ok": true,
+        "is_low_fat_risky": false,
+        "is_low_carb_risky": true,
+        "is_low_sodium_risky": false,
+        "is_high_protein_source": false,
+        "raises_glucose_risk": true,
+        "raises_triglycerides_risk": false,
+        "raises_ldl_risk": false,
+        "kidney_risky_high_sodium": false,
+        "kidney_risky_very_high_protein": false
+      }
+    },
+
+    "grain.gluten_free.flour": {
+      "label": "Gluten-free flour blend (rice/corn/tapioca mix)",
+      "examples": ["gluten-free flour", "rice flour", "corn flour", "tapioca flour", "gf flour blend"],
+      "flags": {
+        "contains_wheat_gluten": false,
+        "contains_dairy": false,
+        "contains_egg": false,
+        "contains_fish": false,
+        "contains_soy": false,
+        "contains_tree_nut": false,
+        "contains_peanut": false,
+        "contains_sesame": false,
+        "is_vegan_ok": true,
+        "is_vegetarian_ok": true,
+        "is_halal_ok": true,
+        "is_low_fat_risky": false,
+        "is_low_carb_risky": true,
+        "is_low_sodium_risky": false,
+        "is_high_protein_source": false,
+        "raises_glucose_risk": true,
+        "raises_triglycerides_risk": false,
+        "raises_ldl_risk": false,
+        "kidney_risky_high_sodium": false,
+        "kidney_risky_very_high_protein": false
+      }
+    },
+
+    "sodium.salt": {
+      "label": "Salt",
+      "examples": ["salt", "sea salt", "kosher salt"],
+      "flags": {
+        "contains_wheat_gluten": false,
+        "contains_dairy": false,
+        "contains_egg": false,
+        "contains_fish": false,
+        "contains_soy": false,
+        "contains_tree_nut": false,
+        "contains_peanut": false,
+        "contains_sesame": false,
+        "is_vegan_ok": true,
+        "is_vegetarian_ok": true,
+        "is_halal_ok": true,
+        "is_low_fat_risky": false,
+        "is_low_carb_risky": false,
+        "is_low_sodium_risky": true,
+        "is_high_protein_source": false,
+        "raises_glucose_risk": false,
+        "raises_triglycerides_risk": false,
+        "raises_ldl_risk": false,
+        "kidney_risky_high_sodium": true,
+        "kidney_risky_very_high_protein": false
+      }
+    },
+
+    "seasoning.spice": {
+      "label": "Spices (pepper, paprika, cumin...)",
+      "examples": ["pepper", "black pepper", "paprika", "cumin", "chili powder"],
+      "flags": {
+        "contains_wheat_gluten": false,
+        "contains_dairy": false,
+        "contains_egg": false,
+        "contains_fish": false,
+        "contains_soy": false,
+        "contains_tree_nut": false,
+        "contains_peanut": false,
+        "contains_sesame": false,
+        "is_vegan_ok": true,
+        "is_vegetarian_ok": true,
+        "is_halal_ok": true,
+        "is_low_fat_risky": false,
+        "is_low_carb_risky": false,
+        "is_low_sodium_risky": false,
+        "is_high_protein_source": false,
+        "raises_glucose_risk": false,
+        "raises_triglycerides_risk": false,
+        "raises_ldl_risk": false,
+        "kidney_risky_high_sodium": false,
+        "kidney_risky_very_high_protein": false
+      }
+    },
+
+    "fat.vegetable_oil": {
+      "label": "Vegetable oil",
+      "examples": ["vegetable oil", "canola oil", "sunflower oil"],
+      "flags": {
+        "contains_wheat_gluten": false,
+        "contains_dairy": false,
+        "contains_egg": false,
+        "contains_fish": false,
+        "contains_soy": false,
+        "contains_tree_nut": false,
+        "contains_peanut": false,
+        "contains_sesame": false,
+        "is_vegan_ok": true,
+        "is_vegetarian_ok": true,
+        "is_halal_ok": true,
+        "is_low_fat_risky": true,
+        "is_low_carb_risky": false,
+        "is_low_sodium_risky": false,
+        "is_high_protein_source": false,
+        "raises_glucose_risk": false,
+        "raises_triglycerides_risk": false,
+        "raises_ldl_risk": false,
+        "kidney_risky_high_sodium": false,
+        "kidney_risky_very_high_protein": false
+      }
+    },
+
+    "herb.aromatic": {
+      "label": "Aromatics and herbs",
+      "examples": ["garlic", "parsley", "cilantro", "basil", "onion"],
+      "flags": {
+        "contains_wheat_gluten": false,
+        "contains_dairy": false,
+        "contains_egg": false,
+        "contains_fish": false,
+        "contains_soy": false,
+        "contains_tree_nut": false,
+        "contains_peanut": false,
+        "contains_sesame": false,
+        "is_vegan_ok": true,
+        "is_vegetarian_ok": true,
+        "is_halal_ok": true,
+        "is_low_fat_risky": false,
+        "is_low_carb_risky": false,
+        "is_low_sodium_risky": false,
+        "is_high_protein_source": false,
+        "raises_glucose_risk": false,
+        "raises_triglycerides_risk": false,
+        "raises_ldl_risk": false,
+        "kidney_risky_high_sodium": false,
+        "kidney_risky_very_high_protein": false
+      }
+    },
+
+    "dairy.butter_ghee": {
+      "label": "Butter / ghee (dairy, saturated fat)",
+      "examples": ["butter", "ghee"],
+      "flags": {
+        "contains_wheat_gluten": false,
+        "contains_dairy": true,
+        "contains_egg": false,
+        "contains_fish": false,
+        "contains_soy": false,
+        "contains_tree_nut": false,
+        "contains_peanut": false,
+        "contains_sesame": false,
+        "is_vegan_ok": false,
+        "is_vegetarian_ok": true,
+        "is_halal_ok": true,
+        "is_low_fat_risky": true,
+        "is_low_carb_risky": false,
+        "is_low_sodium_risky": false,
+        "is_high_protein_source": false,
+        "raises_glucose_risk": false,
+        "raises_triglycerides_risk": true,
+        "raises_ldl_risk": true,
+        "kidney_risky_high_sodium": false,
+        "kidney_risky_very_high_protein": false
+      }
+    },
+
+    "fat.olive_oil": {
+      "label": "Olive oil",
+      "examples": ["olive oil"],
+      "flags": {
+        "contains_wheat_gluten": false,
+        "contains_dairy": false,
+        "contains_egg": false,
+        "contains_fish": false,
+        "contains_soy": false,
+        "contains_tree_nut": false,
+        "contains_peanut": false,
+        "contains_sesame": false,
+        "is_vegan_ok": true,
+        "is_vegetarian_ok": true,
+        "is_halal_ok": true,
+        "is_low_fat_risky": true,
+        "is_low_carb_risky": false,
+        "is_low_sodium_risky": false,
+        "is_high_protein_source": false,
+        "raises_glucose_risk": false,
+        "raises_triglycerides_risk": false,
+        "raises_ldl_risk": false,
+        "kidney_risky_high_sodium": false,
+        "kidney_risky_very_high_protein": false
+      }
+    },
+
+    "protein.animal.poultry": {
+      "label": "Poultry (chicken, turkey)",
+      "examples": ["chicken breast", "chicken", "turkey"],
+      "flags": {
+        "contains_wheat_gluten": false,
+        "contains_dairy": false,
+        "contains_egg": false,
+        "contains_fish": false,
+        "contains_soy": false,
+        "contains_tree_nut": false,
+        "contains_peanut": false,
+        "contains_sesame": false,
+        "is_vegan_ok": false,
+        "is_vegetarian_ok": false,
+        "is_halal_ok": true,
+        "is_low_fat_risky": false,
+        "is_low_carb_risky": false,
+        "is_low_sodium_risky": false,
+        "is_high_protein_source": true,
+        "raises_glucose_risk": false,
+        "raises_triglycerides_risk": false,
+        "raises_ldl_risk": false,
+        "kidney_risky_high_sodium": false,
+        "kidney_risky_very_high_protein": true
+      }
+    }
+  },
+
+  "rules": {
+    "grain.wheat.flour": {
+      "allergies": {
+        "wheat_gluten": {
+          "action": "substitute_category",
+          "to_category": "grain.gluten_free.flour",
+          "amount_policy": "keep_same",
+          "reason": "Contains wheat/gluten"
+        }
+      }
+    },
+
+    "sodium.salt": {
+      "labs": {
+        "CREATININE_HIGH": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.50,
+          "reason": "Kidney-friendly sodium reduction"
+        }
+      },
+      "diets": {
+        "low_sodium": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.50,
+          "reason": "Low sodium preference"
+        }
+
+      }
+    },
+
+    "fat.vegetable_oil": {
+      "diets": {
+        "low_fat": {
+          "action": "reduce_amount",
+          "reduce_ratio": 0.25,
+          "reason": "Low-fat preference: reduce added oil"
+        }
+      }
+    },
+
+    "dairy.butter_ghee": {
+      "allergies": {
+        "dairy": {
+          "action": "substitute_category",
+          "to_category": "fat.olive_oil",
+          "amount_policy": "butter_to_olive_oil_0p75",
+          "reason": "Dairy allergy"
+        }
+      },
+      "diets": {
+        "low_fat": {
+          "action": "substitute_category",
+          "to_category": "fat.olive_oil",
+          "amount_policy": "butter_to_olive_oil_0p75",
+          "reason": "Low-fat preference: replace saturated fat source"
+        }
+      },
+      "labs": {
+        "LDL_HIGH": {
+          "action": "substitute_category",
+          "to_category": "fat.olive_oil",
+          "amount_policy": "butter_to_olive_oil_0p75",
+          "reason": "Reduce saturated fat for LDL"
+        },
+        "TRIGLYCERIDES_HIGH": {
+          "action": "substitute_category",
+          "to_category": "fat.olive_oil",
+          "amount_policy": "butter_to_olive_oil_0p75",
+          "reason": "Reduce saturated fat for triglycerides"
+        }
+      }
+    },
+
+    "protein.animal.poultry": {
+      "diets": {
+        "high_protein": {
+          "action": "increase_amount",
+          "increase_ratio": 0.20,
+          "reason": "High-protein preference"
+        }
+      },
+      "labs": {
+        "CREATININE_HIGH": {
+          "action": "block_high_protein_increase",
+          "reason": "Creatinine high: avoid increasing protein load"
+        }
+      }
+    }
+  },
+
+  "defaults": {
+    "no_rule_behavior": "keep_and_report",
+    "report_prefix": "[Step3]"
+  }
+}
