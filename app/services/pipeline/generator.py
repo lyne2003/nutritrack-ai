@@ -73,6 +73,10 @@ def generate_two_recipes_full_pipeline(
         final_ingredients = step3.get("final_ingredients") or []
         substitution_report = step3.get("substitution_report") or []
         print(f"🔄 [Step 3] Substitution done. {len(final_ingredients)} final ingredient(s).")
+        print(f"🔄 [Step 3] Final ingredients: {final_ingredients}")
+        print(f"🔄 [Step 3] Substitution report:")
+        for line in substitution_report:
+            print(f"   → {line}")
 
         # ----------------------
         # Step 4: Nutrition (OpenAI) -> ONLY per_serving sent to mobile

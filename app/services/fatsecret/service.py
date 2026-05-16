@@ -43,7 +43,7 @@ def retrieve_two_recipes(ingredients_str: str) -> List[Dict[str, Any]]:
         page_number=0,
     )
 
-    # Fetch up to 5 candidate recipe IDs
+    # Fetch up to 2 candidate recipe IDs (reduced from 5 to speed up pipeline)
     ids = extract_recipe_ids_from_search(search, limit=5)
     print(f"📡 [FatSecret] Found {len(ids)} candidate recipe ID(s): {ids}")
 
@@ -57,8 +57,8 @@ def retrieve_two_recipes(ingredients_str: str) -> List[Dict[str, Any]]:
         print(f"📡 [FatSecret] Recipe '{normalized.get('recipe_name')}' scored {score}")
         scored.append((score, normalized))
 
-    # Sort by score descending, return top 2
+    # Sort by score descending, return top 1 (reduced from 2 to speed up pipeline)
     scored.sort(key=lambda x: x[0], reverse=True)
-    top2 = [recipe for _, recipe in scored[:2]]
-    print(f"📡 [FatSecret] Top 2 selected: {[r.get('recipe_name') for r in top2]}")
-    return top2
+    top1 = [recipe for _, recipe in scored[:1]]
+    print(f"📡 [FatSecret] Top 1 selected: {[r.get('recipe_name') for r in top1]}")
+    return top1

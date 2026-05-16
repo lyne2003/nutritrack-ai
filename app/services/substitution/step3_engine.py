@@ -435,6 +435,9 @@ def _apply_constraints_for_item(
     allergies = set(constraints.get("allergies") or [])
     labs = set(constraints.get("lab_flags") or [])
 
+    print(f"  🔍 [Constraints] ingredient='{original_line}' category='{category_id}'")
+    print(f"  🔍 [Constraints] diets={diets} allergies={allergies} labs={labs}")
+
     triggered_tags: List[str] = []
 
     def add_trigger(block: str, key: str):
@@ -592,8 +595,10 @@ def run_step3_substitution(
 
         category_id = llm_out.get("category_id") or "other_unknown"
         canonical_name = llm_out.get("canonical_name") or (item.get("food_name") or ingredient_line)
-        flags = _ensure_all_flags(llm_out.get("flags") or {})
+        # Use deterministic flags derived from the category (more reliable than LLM flag output)
+        flags = _ensure_all_flags(_flags_from_category(category_id))
         print(f"🔄 [Step 3] '{ingredient_line}' -> category: {category_id}, canonical: {canonical_name}")
+        print(f"🔄 [Step 3] Flags (deterministic): contains_wheat_gluten={flags.get('contains_wheat_gluten')}, contains_dairy={flags.get('contains_dairy')}, raises_ldl_risk={flags.get('raises_ldl_risk')}, is_gluten_free_friendly={flags.get('is_gluten_free_friendly')}")
 
         out_item = dict(item)
         out_item["mapped_category_id"] = category_id
