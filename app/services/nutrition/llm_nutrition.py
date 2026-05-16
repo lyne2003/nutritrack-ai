@@ -139,6 +139,7 @@ Return JSON with exactly this structure:
 }}
 """.strip()
 
+    print(f"🥗 [Nutrition] Sending {len(final_ingredients)} ingredient(s) to OpenAI ({model}) for nutrition estimation...")
     resp = client.chat.completions.create(
         model=model,
         messages=[{"role": "user", "content": prompt}],
@@ -147,6 +148,7 @@ Return JSON with exactly this structure:
 
     raw = resp.choices[0].message.content or ""
     text = _strip_code_fences(raw)
+    print(f"🥗 [Nutrition] OpenAI response received.")
 
     try:
         data = json.loads(text)

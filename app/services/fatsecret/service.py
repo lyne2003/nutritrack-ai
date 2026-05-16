@@ -33,6 +33,7 @@ def retrieve_two_recipes(ingredients_str: str) -> List[Dict[str, Any]]:
     # Parse user ingredient tokens (e.g. "chicken, broccoli, pasta" -> ["chicken", "broccoli", "pasta"])
     user_tokens = [t.strip() for t in ingredients_str.split(",") if t.strip()]
 
+    print(f"📡 [FatSecret] Calling recipes.search.v3 with: '{ingredients_str}'")
     search = fs.recipes_search_v3(
         search_expression=ingredients_str,
         max_results=20,
@@ -44,15 +45,20 @@ def retrieve_two_recipes(ingredients_str: str) -> List[Dict[str, Any]]:
 
     # Fetch up to 5 candidate recipe IDs
     ids = extract_recipe_ids_from_search(search, limit=5)
+    print(f"📡 [FatSecret] Found {len(ids)} candidate recipe ID(s): {ids}")
 
     # Get full details and score each candidate
     scored: List[tuple] = []
     for rid in ids:
+        print(f"📡 [FatSecret] Fetching full details for recipe ID: {rid}")
         full = fs.recipe_get_v2(rid)
         normalized = normalize_recipe_get_v2(full)
         score = score_recipe_by_ingredients(normalized, user_tokens)
+        print(f"📡 [FatSecret] Recipe '{normalized.get('recipe_name')}' scored {score}")
         scored.append((score, normalized))
 
     # Sort by score descending, return top 2
     scored.sort(key=lambda x: x[0], reverse=True)
-    return [recipe for _, recipe in scored[:2]]
+    top2 = [recipe for _, recipe in scored[:2]]
+    print(f"📡 [FatSecret] Top 2 selected: {[r.get('recipe_name') for r in top2]}")
+    return top2

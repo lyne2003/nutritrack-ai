@@ -581,6 +581,7 @@ def run_step3_substitution(
 
     for item in scaled_struct:
         ingredient_line = item.get("ingredient_description") or item.get("food_name") or ""
+        print(f"🔄 [Step 3] Classifying ingredient: '{ingredient_line}'")
 
         # 1) LLM classification + flags (classification only)
         llm_out = classify_and_flag_with_llm(
@@ -592,6 +593,7 @@ def run_step3_substitution(
         category_id = llm_out.get("category_id") or "other_unknown"
         canonical_name = llm_out.get("canonical_name") or (item.get("food_name") or ingredient_line)
         flags = _ensure_all_flags(llm_out.get("flags") or {})
+        print(f"🔄 [Step 3] '{ingredient_line}' -> category: {category_id}, canonical: {canonical_name}")
 
         out_item = dict(item)
         out_item["mapped_category_id"] = category_id
