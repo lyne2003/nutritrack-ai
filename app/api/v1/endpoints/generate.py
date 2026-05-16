@@ -7,6 +7,13 @@ router = APIRouter()
 
 @router.post("/generate")
 def generate(req: GenerateRequest):
+    print("🔥 REQUEST RECEIVED")
+    print("Ingredients:", req.ingredients)
+    print("Servings:", req.servings)
+    print("Diets:", req.diets)
+    print("Allergies:", req.allergies)
+    print("Lab Flags:", req.lab_flags)
+
     recipes = generate_two_recipes_full_pipeline(
         ingredients_str=req.ingredients,
         servings=req.servings,

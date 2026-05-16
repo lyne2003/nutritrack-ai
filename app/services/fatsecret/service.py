@@ -5,7 +5,7 @@ from typing import Any, Dict, List
 
 from app.core.config import settings
 from app.services.fatsecret.client import FatSecretClient, FatSecretConfig
-from app.services.fatsecret.parser import extract_recipe_ids_from_search, normalize_recipe_get_v2
+from app.services.fatsecret.parser import extract_recipe_ids_from_search, normalize_recipe_get_v2, score_recipe_by_ingredients
 
 
 def get_client() -> FatSecretClient:
@@ -23,11 +23,15 @@ def retrieve_two_recipes(ingredients_str: str) -> List[Dict[str, Any]]:
     Step 1 (Retrieval):
     - recipes.search.v3 using user's ingredients string
       region=United States, recipe_type=main dish, include_images=false
-    - take 2 recipe_ids
-    - recipe.get.v2 for full details
-    - normalize fields we need (no nutrition)
+    - fetch up to 5 recipe candidates
+    - recipe.get.v2 for full details on each
+    - score each recipe by how many user ingredients it contains
+    - return the top 2 by score
     """
     fs = get_client()
+
+    # Parse user ingredient tokens (e.g. "chicken, broccoli, pasta" -> ["chicken", "broccoli", "pasta"])
+    user_tokens = [t.strip() for t in ingredients_str.split(",") if t.strip()]
 
     search = fs.recipes_search_v3(
         search_expression=ingredients_str,
@@ -38,11 +42,17 @@ def retrieve_two_recipes(ingredients_str: str) -> List[Dict[str, Any]]:
         page_number=0,
     )
 
-    ids = extract_recipe_ids_from_search(search, limit=2)
+    # Fetch up to 5 candidate recipe IDs
+    ids = extract_recipe_ids_from_search(search, limit=5)
 
-    results: List[Dict[str, Any]] = []
+    # Get full details and score each candidate
+    scored: List[tuple] = []
     for rid in ids:
         full = fs.recipe_get_v2(rid)
-        results.append(normalize_recipe_get_v2(full))
+        normalized = normalize_recipe_get_v2(full)
+        score = score_recipe_by_ingredients(normalized, user_tokens)
+        scored.append((score, normalized))
 
-    return results
+    # Sort by score descending, return top 2
+    scored.sort(key=lambda x: x[0], reverse=True)
+    return [recipe for _, recipe in scored[:2]]

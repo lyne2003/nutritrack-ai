@@ -2,6 +2,19 @@ from __future__ import annotations
 from typing import Any, Dict, List
 
 
+def score_recipe_by_ingredients(recipe: Dict[str, Any], user_tokens: List[str]) -> int:
+    """
+    Count how many of the user's ingredient tokens appear (case-insensitive)
+    in the recipe's ingredient names/descriptions.
+    """
+    ingredients = recipe.get("ingredients_struct") or []
+    all_text = " ".join([
+        (ing.get("food_name") or "") + " " + (ing.get("ingredient_description") or "")
+        for ing in ingredients
+    ]).lower()
+    return sum(1 for token in user_tokens if token.lower() in all_text)
+
+
 def extract_recipe_ids_from_search(search_json: Dict[str, Any], limit: int = 2) -> List[str]:
     recipes_block = search_json.get("recipes", {})
     recipe_list = recipes_block.get("recipe", []) or []
