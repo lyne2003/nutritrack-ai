@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import Any, Dict, List, Optional, Tuple
 
+# from matplotlib.pylab import block
+
 from app.services.substitution.loader import load_rules_v3
 from app.services.substitution.llm_verifier import (
     ALL_FLAGS,
@@ -13,6 +15,15 @@ from app.services.substitution.llm_verifier import (
 # -------------------------
 # Helpers
 # -------------------------
+def _reason_clause(reason: str) -> str:
+    """Format a reason string as a 'because ...' clause."""
+    reason = (reason or "").strip().rstrip(".")
+    if not reason:
+        return "because it conflicts with your constraints"
+    if reason.lower().startswith("because"):
+        return reason
+    return f"because {reason}"
+
 def _normalize_constraints(
     diets: Optional[List[str]],
     allergies: Optional[List[str]],
@@ -242,10 +253,14 @@ def _is_triggered(block: str, key: str, flags: Dict[str, bool]) -> bool:
             return bool(flags.get("is_low_fat_risky", False))
         if key == "low_sodium":
             return bool(flags.get("is_low_sodium_risky", False)) or bool(flags.get("kidney_risky_high_sodium", False))
+        # if key == "high_protein":
+        #     # Trigger ONLY if this ingredient is NOT already a protein source.
+        #     # (Otherwise it would block other diet prefs like low_fat/low_sodium.)
+        #     return not bool(flags.get("is_high_protein_source", False))
         if key == "high_protein":
-            # Trigger ONLY if this ingredient is NOT already a protein source.
-            # (Otherwise it would block other diet prefs like low_fat/low_sodium.)
-            return not bool(flags.get("is_high_protein_source", False))
+            # High-protein should apply only to protein sources,
+            # not to vegetables, water, spices, tomatoes, etc.
+            return bool(flags.get("is_high_protein_source", False))
         return False
 
     return False
@@ -363,8 +378,10 @@ def _apply_rule_action(
             if not ok:
                 rep.append(f"{prefix} {block}({key}): Wanted to adjust amount but amount is non-numeric.")
 
-        rep.append(f"{prefix} {block}({key}): Replaced '{original_line}' with '{sub_name}' because {reason_user}.")
-
+        # rep.append(f"{prefix} {block}({key}): Replaced '{original_line}' with '{sub_name}' because {reason_user}.")
+        rep.append(f"Replaced '{original_line}' with '{sub_name}' {_reason_clause(reason_user)}.")
+        print(f"🐛 [DEBUG _apply_rule_action] rep={rep}")  # ← ADD THIS
+        
         if block == "allergies" and constraints.get("diets") and not state.get("priority_note_added", False):
             rep.append(
                 f"{prefix} Note: Allergies are prioritized over halal/labs/diets. Diet preferences were applied only if they didn’t conflict."
@@ -378,7 +395,8 @@ def _apply_rule_action(
         ratio = float(rule.get("reduce_ratio") or 0.75)
         ok = _apply_amount_multiplier(out, ratio)
         if ok:
-            rep.append(f"{prefix} {block}({key}): Reduced amount of '{original_line}' because {reason_user}.")
+            # rep.append(f"{prefix} {block}({key}): Reduced amount of '{original_line}' because {reason_user}.")
+            rep.append(f"Reduced amount of '{original_line}' {_reason_clause(reason_user)}.")
         else:
             rep.append(f"{prefix} {block}({key}): Wanted to reduce amount but amount is non-numeric.")
         return out, rep, True
@@ -395,7 +413,8 @@ def _apply_rule_action(
         ratio = 1.0 + float(rule.get("increase_ratio") or 0.20)
         ok = _apply_amount_multiplier(out, ratio)
         if ok:
-            rep.append(f"{prefix} {block}({key}): Increased amount of '{original_line}' because {reason_user}.")
+            # rep.append(f"{prefix} {block}({key}): Increased amount of '{original_line}' because {reason_user}.")
+            rep.append(f"Increased amount of '{original_line}' {_reason_clause(reason_user)}.")
         else:
             rep.append(f"{prefix} {block}({key}): Wanted to increase amount but amount is non-numeric.")
         return out, rep, True
@@ -482,6 +501,7 @@ def _apply_constraints_for_item(
                     state=state,
                 )
                 report.extend(rep)
+                print(f"🐛 [DEBUG _apply_constraints] after extend, report={report}")  # ← ADD THIS
                 if stop:
                     return out, report
 
@@ -548,12 +568,20 @@ def _apply_constraints_for_item(
                         )
                     return out, report
 
-                report.append(
-                    f"{prefix} {block}({key}): No predefined rule for category '{category_id}'. AI kept '{original_line}' because it could not propose a safe change."
-                )
+                # report.append(
+                #     f"{prefix} {block}({key}): No predefined rule for category '{category_id}'. AI kept '{original_line}' because it could not propose a safe change."
+                # )
+                # return out, report
+
+                # Only warn the user if a hard safety constraint was triggered.
+                # For soft diet/lab preferences, do not show a scary message.
+                if block in {"allergies", "halal"}:
+                    report.append(
+                        f"No safe substitution was found for '{original_line}', so it was kept unchanged. Please review this ingredient."
+                    )
                 return out, report
 
-    report.append(f"{prefix} No change: '{original_line}' did not conflict with your constraints.")
+    # report.append(f"{prefix} No change: '{original_line}' did not conflict with your constraints.")
     return out, report
 
 
@@ -621,9 +649,11 @@ def run_step3_substitution(
         final_struct.append(out_item)
         final_lines.append(_format_final_line(out_item))
         report.extend(out_rep)
+        print(f"🐛 [DEBUG run_step3] after ingredient '{ingredient_line}', out_rep={out_rep}, total report={report}")  # ← ADD
 
     return {
         "final_struct": final_struct,
         "final_ingredients": final_lines,
         "substitution_report": report,
     }
+

@@ -7,6 +7,7 @@ from app.api.v1.endpoints import substitution
 from app.api.v1.endpoints import nutrition
 from app.api.v1.endpoints import pipeline_test
 from app.api.v1.endpoints import generate
+from app.api.v1.endpoints import generate_stream
 
 router = APIRouter()
 router.include_router(health_router, tags=["health"])
@@ -22,3 +23,4 @@ router.include_router(nutrition.router, tags=["nutrition"])
 
 router.include_router(pipeline_test.router, tags=["pipeline"])
 router.include_router(generate.router, tags=["generate"])
+router.include_router(generate_stream.router, tags=["generate"])
