@@ -20,9 +20,21 @@ def _reason_clause(reason: str) -> str:
     reason = (reason or "").strip().rstrip(".")
     if not reason:
         return "because it conflicts with your constraints"
-    if reason.lower().startswith("because"):
+    lower = reason.lower()
+    if lower.startswith("because") or lower.startswith("to "):
         return reason
     return f"because {reason}"
+
+
+import re as _re
+
+def _strip_step3_prefix(text: str) -> str:
+    """Remove leading '[Step3] block(key): ' style prefixes from report lines."""
+    # Remove [Step3] tag
+    text = _re.sub(r'^\[Step3\]\s*', '', text)
+    # Remove block(key): prefix e.g. "allergies(dairy): " or "diet_prefs(low_fat): "
+    text = _re.sub(r'^\w+\([^)]+\):\s*', '', text)
+    return text.strip()
 
 def _normalize_constraints(
     diets: Optional[List[str]],
@@ -648,7 +660,7 @@ def run_step3_substitution(
 
         final_struct.append(out_item)
         final_lines.append(_format_final_line(out_item))
-        report.extend(out_rep)
+        report.extend([_strip_step3_prefix(r) for r in out_rep])
         print(f"🐛 [DEBUG run_step3] after ingredient '{ingredient_line}', out_rep={out_rep}, total report={report}")  # ← ADD
 
     return {
