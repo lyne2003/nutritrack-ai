@@ -5,6 +5,7 @@ from typing import Any, Dict, List
 from app.services.fatsecret.service import retrieve_two_recipes
 from app.services.scaling.structured_scaler import scale_structured_ingredients
 from app.services.substitution.step3_engine import run_step3_substitution
+from app.services.substitution.step_rewriter import rewrite_steps_with_substitutions
 
 # Step 4 (your working OpenAI nutrition)
 from app.services.nutrition.llm_nutrition import compute_nutrition_per_serving_with_llm
@@ -71,12 +72,26 @@ def generate_two_recipes_full_pipeline(
             lab_flags=lab_flags,
         )
         final_ingredients = step3.get("final_ingredients") or []
+        final_struct = step3.get("final_struct") or []
         substitution_report = step3.get("substitution_report") or []
         print(f"🔄 [Step 3] Substitution done. {len(final_ingredients)} final ingredient(s).")
         print(f"🔄 [Step 3] Final ingredients: {final_ingredients}")
         print(f"🔄 [Step 3] Substitution report:")
         for line in substitution_report:
             print(f"   → {line}")
+
+        # ----------------------
+        # Step 3b: Rewrite steps to reflect substitutions
+        # ----------------------
+        print(f"✍️  [Step 3b] Rewriting recipe steps to reflect substitutions...")
+        steps = rewrite_steps_with_substitutions(
+            steps=steps,
+            scaled_struct=scaled.scaled_struct,
+            final_struct=final_struct,
+            recipe_name=recipe_name,
+            use_llm_polish=True,
+        )
+        print(f"✍️  [Step 3b] Steps rewriting done.")
 
         # ----------------------
         # Step 4: Nutrition (OpenAI) -> ONLY per_serving sent to mobile

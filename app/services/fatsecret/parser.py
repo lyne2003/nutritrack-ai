@@ -66,9 +66,29 @@ def normalize_recipe_get_v2(recipe_get_json: Dict[str, Any]) -> Dict[str, Any]:
 
     # directions/steps
     directions_block = recipe.get("directions", {}) or {}
-    steps = directions_block.get("direction", []) or []
-    if isinstance(steps, str):
-        steps = [steps]
+    steps_raw = directions_block.get("direction", []) or []
+    if isinstance(steps_raw, (str, dict)):
+        steps_raw = [steps_raw]
+
+    # Sort by direction_number if available, then extract direction_description
+    def _step_sort_key(x):
+        if isinstance(x, dict):
+            try:
+                return int(x.get("direction_number", 0))
+            except (ValueError, TypeError):
+                return 0
+        return 0
+
+    steps_raw_sorted = sorted(steps_raw, key=_step_sort_key)
+
+    steps = []
+    for x in steps_raw_sorted:
+        if isinstance(x, dict):
+            text = (x.get("direction_description") or "").strip()
+        else:
+            text = str(x).strip()
+        if text:
+            steps.append(text)
 
     return {
         "recipe_id": recipe_id,
@@ -76,5 +96,5 @@ def normalize_recipe_get_v2(recipe_get_json: Dict[str, Any]) -> Dict[str, Any]:
         "base_servings": base_servings,
         "prep_time_min": prep_time_min,
         "ingredients_struct": ingredients_struct,
-        "steps": [str(x).strip() for x in steps if str(x).strip()],
+        "steps": steps,
     }

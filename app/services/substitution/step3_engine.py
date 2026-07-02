@@ -30,9 +30,9 @@ def _normalize_constraints(
     lab_flags: Optional[List[str]],
 ) -> Dict[str, Any]:
     return {
-        "diets": [d.strip().lower() for d in (diets or [])],
-        "allergies": [a.strip().lower() for a in (allergies or [])],
-        "lab_flags": [l.strip().upper() for l in (lab_flags or [])],
+        "diets": [d.strip().lower().replace(" ", "_") for d in (diets or [])],
+        "allergies": [a.strip().lower().replace(" ", "_") for a in (allergies or [])],
+        "lab_flags": [l.strip().upper().replace(" ", "_") for l in (lab_flags or [])],
     }
 
 

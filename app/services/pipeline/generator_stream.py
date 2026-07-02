@@ -6,6 +6,7 @@ from typing import Any, AsyncGenerator, Dict, List, Optional
 from app.services.fatsecret.service import retrieve_two_recipes
 from app.services.scaling.structured_scaler import scale_structured_ingredients
 from app.services.substitution.step3_engine import run_step3_substitution
+from app.services.substitution.step_rewriter import rewrite_steps_with_substitutions
 from app.services.nutrition.llm_nutrition import compute_nutrition_per_serving_with_llm
 
 
@@ -72,7 +73,19 @@ async def stream_recipe_pipeline(
             lab_flags=lab_flags,
         )
         final_ingredients = step3.get("final_ingredients") or []
+        final_struct = step3.get("final_struct") or []
         substitution_report = step3.get("substitution_report") or []
+
+        yield _sse("progress", {"message": "✍️ Updating recipe steps to reflect your personalized ingredients..."})
+
+        # ── Step 3b: Rewrite steps ─────────────────────────────────────────
+        steps = rewrite_steps_with_substitutions(
+            steps=steps,
+            scaled_struct=scaled.scaled_struct,
+            final_struct=final_struct,
+            recipe_name=recipe_name,
+            use_llm_polish=True,
+        )
 
         yield _sse("progress", {"message": "🥗 Calculating nutrition facts per serving..."})
 
